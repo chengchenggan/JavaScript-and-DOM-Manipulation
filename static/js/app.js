@@ -11,15 +11,23 @@ var button = d3.select('#filter-btn');
 button.on('click', function(){
 
 // Select the input element and get the raw HTML node
-var inputElement = d3.select("#datetime");
+var inputElement_datetime = d3.select("#datetime");
+var inputElement_city = d3.select("#city");
+var inputElement_state = d3.select("#state");
+var inputElement_country = d3.select("#country");
+var inputElement_shape = d3.select("#shape");
 
 // Get the value property of the input element
-var inputValue = inputElement.property('value');
+var inputValue_datetime = inputElement_datetime.property('value');
+var inputValue_city = inputElement_city.property('value');
+var inputValue_state = inputElement_state.property('value');
+var inputValue_country= inputElement_country.property('value');
+var inputValue_shape= inputElement_shape.property('value');
 
-// console.log(`user enter ${inputValue}`);
-// console.log(tableData);
+  var filteredData = tableData.filter(sightings => (inputValue_datetime === "" || sightings.datetime === inputValue_datetime) && (inputValue_country ==="" || sightings.country === inputValue_country) && (inputValue_city === "" || sightings.city === inputValue_city) && (inputValue_state=== "" || sightings.state === inputValue_state) && (inputValue_shape=== "" || sightings.shape === inputValue_shape));
+//}
+//var filteredData = tableData.filter(sightings => sightings.datetime == inputValue_datetime );
 
-var filteredData = tableData.filter(sightings => sightings.datetime === inputValue);
 
   console.log(filteredData);
 
@@ -35,4 +43,3 @@ filteredData.forEach((datapoint) => {
 });
 
 })
-
